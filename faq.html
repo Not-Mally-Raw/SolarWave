@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Energy FAQ</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('sunset.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    
+    .faq-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 800px;
+      border-radius: 10px;
+    }
+    
+    .faq-header h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .faq-content {
+      margin-top: 10px;
+    }
+    
+    .faq-item {
+      margin-bottom: 15px;
+    }
+    
+    .faq-question {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      padding: 10px;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .faq-question span {
+      margin-left: auto;
+    }
+    
+    .faq-icon {
+      margin-left: auto;
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-answer {
+      display: none;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      margin-top: 5px;
+      color: white;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="faq-container">
+    <header class="faq-header">
+      <h1>Frequently Asked Questions: Solar Energy</h1>
+    </header>
+    <div class="faq-content">
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> What are the major challenges in solar energy generation?
+        </h2>
+        <p class="faq-answer">
+          Solar energy generation faces challenges like intermittent energy production (weather-dependent), high initial setup costs, and the need for large land areas. Solutions include better energy storage systems, government subsidies, and vertical solar panel installations to save space.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> How can we improve the efficiency of solar panels?
+        </h2>
+        <p class="faq-answer">
+          Efficiency can be improved using technologies like multi-junction solar cells, proper maintenance (cleaning panels), and installing panels at optimal angles to capture the maximum sunlight.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> Is solar energy generation feasible in cloudy or cold regions?
+        </h2>
+        <p class="faq-answer">
+          Yes, solar energy is feasible in such regions with advanced solar panels that work well in diffuse sunlight. Complementing solar energy with other renewable sources like wind energy also helps in such areas.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> What about the environmental impact of solar panel waste?
+        </h2>
+        <p class="faq-answer">
+          Solar panel waste can be managed by developing recycling technologies and frameworks for end-of-life solar panels. Governments and industries need to collaborate on waste management programs.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> How do solar panels work at night?
+        </h2>
+        <p class="faq-answer">
+          Solar panels don't generate power at night, but energy storage systems like batteries store excess daytime energy for use after sunset.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> What is the lifespan of a solar panel?
+        </h2>
+        <p class="faq-answer">
+          Most solar panels have a lifespan of 25-30 years, after which their efficiency may decline but they can still produce electricity.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> Are there any risks of using solar panels?
+        </h2>
+        <p class="faq-answer">
+          Risks include fire hazards from improper installation, damage from extreme weather, and degradation over time. Proper maintenance and certified installations mitigate these risks.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> What is the role of government policies in solar adoption?
+        </h2>
+        <p class="faq-answer">
+          Government policies like subsidies, tax incentives, and net metering encourage solar adoption by reducing costs and making solar investments more appealing.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> How do solar panels affect property value?
+        </h2>
+        <p class="faq-answer">
+          Solar panels can increase property value as they lower energy bills. However, their effect depends on the local real estate market and the system's age.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h2 class="faq-question" onclick="toggleAnswer(this)">
+          <span class="faq-icon">+</span> Can solar panels be recycled?
+        </h2>
+        <p class="faq-answer">
+          Yes, solar panels can be recycled. Recycling facilities recover materials like glass, silicon, and metals for reuse, but recycling technology is still evolving.
+        </p>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleAnswer(question) {
+      const answer = question.nextElementSibling;
+      const icon = question.querySelector('.faq-icon');
+    
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.style.transform = "rotate(0deg)";
+      } else {
+        answer.style.display = "block";
+        icon.style.transform = "rotate(45deg)";
+      }
+    }
+  </script>
+</body>
+</html>

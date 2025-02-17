@@ -1,0 +1,107 @@
+/* Reset & Base */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Fullscreen Map */
+#map {
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+}
+
+/* Styling for the geocoder search box */
+.leaflet-control-geocoder {
+    margin: 20px;
+    width: 350px;
+    background-color: rgba(255, 255, 255, 0.95); /* White background for search box */
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    display: flex; /* Flexbox for alignment */
+}
+
+.leaflet-control-geocoder input {
+    background-color: white; /* White input background */
+    color: black; /* Black text color */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 8px 12px; /* Padding for input */
+    width: 100%; /* Full width of the search box */
+    transition: border 0.3s ease; /* Smooth border change on focus */
+    outline: none; /* Remove outline */
+}
+
+.leaflet-control-geocoder input:focus {
+    border: 1px solid #ff6700; /* Highlight border color on focus */
+}
+
+.leaflet-control-geocoder input::placeholder {
+    color: rgba(0, 0, 0, 0.5); /* Darker placeholder text */
+}
+
+.leaflet-control-geocoder .leaflet-control-geocoder-icon {
+    color: black; /* Black search icon */
+    margin-left: 10px; /* Spacing from the input */
+}
+
+/* Popup content styling */
+.leaflet-popup-content-wrapper {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+/* Button styles for drawing */
+.leaflet-draw-toolbar {
+    background-color: rgba(255, 255, 255, 0.9); /* Light background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    padding: 10px; /* Padding for toolbar */
+}
+
+/* Search bar styling */
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    margin: 20px auto; /* Center the search bar */
+    border-radius: 50px; /* Rounded corners */
+    border: 2px solid #ddd; /* Light border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Clip content inside the rounded border */
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px 20px;
+    border: none; /* Remove default input border */
+    outline: none; /* Remove default outline */
+    font-size: 16px;
+    border-radius: 50px 0 0 50px; /* Left-side rounded corners */
+}
+
+.search-bar input::placeholder {
+    color: #aaa; /* Placeholder color */
+}
+
+.search-bar button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 0 50px 50px 0; /* Right-side rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.search-bar button:hover {
+    background-color: #333; /* Darken button on hover */
+}

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolarWave - Energy Revolution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            width: 90vw;
+            height: 85vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            width: 200%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            width: 50%;
+            height: 100%;
+            position: relative;
+        }
+
+        .device-frame {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90vw;
+            height: 85vh;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 25px;
+            background: #000;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 1000;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #slide1 {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('solar-bg.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        #slide2 {
+            background: url('third-bg.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feature-cards {
+            display: flex;
+            justify-content: space-around;
+            gap: 25px;
+            margin-top: auto;
+            padding: 0 40px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            width: 280px;
+            background: rgba(16, 33, 54, 0.6); /* Translucent background */
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #142f4a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon i {
+            font-size: 24px;
+            color: #64ffda;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #64ffda;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #a8b2c1;
+            opacity: 1;
+            height: auto;
+        }
+
+        .platform-keypoints {
+            position: absolute;
+            right: 40px;
+            bottom: 40px;
+            color: #64ffda;
+        }
+
+        .keypoints-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .keypoints-list {
+            list-style: none;
+        }
+
+        .keypoints-list li {
+            color: #a8b2c1;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        nav {
+            position: absolute;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            transform: translateY(-50%);
+            color: white;
+            max-width: 600px;
+        }
+
+        .number {
+            font-size: 120px;
+            opacity: 0.5;
+            font-weight: 200;
+        }
+
+        .title {
+            font-size: 48px;
+            margin-top: -30px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .learn-more {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .learn-more:hover {
+            background: white;
+            color: black;
+        }
+
+        .new-button {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 12px 30px;
+            border: 2px solid orange;
+            color: orange;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .new-button:hover {
+            background: orange;
+            color: black;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            border: 2px solid #64ffda;
+            color: #64ffda;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            align-self: center;
+        }
+
+        .back-button:hover {
+            background: #64ffda;
+            color: white;
+        }
+
+        .social-icons {
+            position: absolute;
+            bottom: 20px;
+            right: 50px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #64ffda;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 20px;  /* Distance from bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #808080;  /* Grey color */
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1000;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide">
+                <div class="device-frame">
+                    <div class="notch"></div>
+                    <div class="container" id="slide1">
+                        <nav>
+                            <div class="logo"></div>
+                            <div class="nav-links">
+                                <a href= "solar101.html"onclick="slideToPage(0)">Solar 101</a>
+                                <a href="faq.html"onclick="slideToPage(0)">FAQ</a>
+                                <a href="about.html">About Us</a>
+                            </div>
+                        </nav>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="content">
+                            <div class="number">01</div>
+                            <h1 class="title">Start Energy Revolution from Your Community</h1>
+                            <p class="subtitle">
+                                Sustainable technologies have never been so affordable. Produce and exchange energy, maximizing the power of renewable sources.
+                            </p>
+                            <a class="learn-more" onclick="slideToPage(1)">Learn More</a>
+                            <a class="new-button" href="map2.html">Check My Roof</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="device-frame">
+                    <div class="notch"></div>
+                    <div class="container" id="slide2">
+                        <nav>
+                            <div class="logo">venture</div>
+                            <div class="nav-links">
+                                <a onclick="slideToPage(0)">Solar 101</a>
+                                <a onclick="slideToPage(1)">FAQ</a>
+                                <a href="#">About Us</a>
+                            </div>
+                        </nav>
+                        <div class="feature-cards">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <h3 class="feature-title">Energy Decentralization</h3>
+                                <p class="feature-description">
+                                    Innovative energy production, storage, and distribution adapted to community needs.
+                                </p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <h3 class="feature-title">Eco-Friendly Sustainability</h3>
+                                <p class="feature-description">
+                                    Promoting sustainable energy practices and environmental consciousness.
+                                </p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3 class="feature-title">Power Exchange</h3>
+                                <p class="feature-description">
+                                    Efficient energy trading system for community power optimization.
+                                </p>
+                            </div>
+                        </div>
+                        <a class="back-button" onclick="slideToPage(0)">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function slideToPage(pageNumber) {
+            const slides = document.querySelector('.slides');
+            slides.style.transform = `translateX(-${pageNumber * 50}%)`;
+        }
+    </script>
+    <div class="watermark">Solarwave Energy</div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolarWave - Sales Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4338ca 0%, #0ea5e9 100%);
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #ffffff, #fbc02d);
+        }
+
+        .app-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-item {
+            padding: 8px 16px;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            background-color: #111827;
+            color: white;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 32px 0;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .actions button {
+            background-color: #000000;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .actions button:hover {
+            background-color: #d32f2f;
+        }
+
+        .tab-nav {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            background-color: #111827;
+            color: white;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            padding: 24px;
+            border-radius: var(--border-radius);
+            background: white;
+            box-shadow: var(--card-shadow);
+            color: #333;
+        }
+
+        .card.red {
+            background-color: #b52727;
+            color: #f5f5f5;
+        }
+
+        .card.yellow {
+            background-color: #fbc02d;
+        }
+
+        .card-title {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: inherit;
+        }
+
+        .card-value {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: inherit;
+        }
+
+        .card-change {
+            font-size: 14px;
+            color: inherit;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title {
+            font-size: 18px;
+            color: #FF9800;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"></svg>
+                Solarwave
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item active">Overview</div>
+                <div class="nav-item">Performance</div>
+                <div class="nav-item">Activity</div>
+                <div class="nav-item">Product</div>
+                <div class="nav-item">Task</div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="page-header">
+                <h1 class="page-title">Solar Energy Dashboard</h1>
+                <div class="actions">
+                    <button>Export Data</button>
+                </div>
+            </div>
+
+            <div class="tab-nav">
+                <div class="tab active">Summary</div>
+                <div class="tab">Insight</div>
+                <div class="tab">Service</div>
+                <div class="tab">Analytic</div>
+                <div class="tab">Target</div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card red">
+                    <h3 class="card-title">Annual Cost Savings</h3>
+                    <div class="card-value">INR 73,912</div>
+                    <div class="card-change">+8.3% compared to reduced usage</div>
+                </div>
+
+                <div class="card yellow">
+                    <h3 class="card-title">Annual Energy Production</h3>
+                    <div class="card-value">4513 kWh</div>
+                    <div class="card-change">+9.2% Than Annual Usage</div>
+                </div>
+
+                <div class="card yellow">
+                    <h3 class="card-title">Investment Cost/Payback period</h3>
+                    <div class="card-value">INR 25,21,642/ 5 years</div>
+                </div>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h3 class="chart-title">Solar Radiation (kWh/m²/day)</h3>
+                    <div id="salesTrendChart"></div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 class="chart-title">Total Power Capacity (kW)</h3>
+                    <div id="revenueGrowthChart"></div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 class="chart-title">Solar Density (W/m²)</h3>
+                    <div id="productDistChart"></div>
+                </div>
+
+                <div class="chart-card">
+                    <h3 class="chart-title">Daily Energy Production</h3>
+                    <div id="performanceGauge"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const salesTrendOptions = {
+            series: [{
+                name: 'Sales',
+                data: [25912, 28000, 32000, 35000, 31000, 29000]
+            }],
+            chart: {
+                type: 'line',
+                height: 350,
+                toolbar: { show: false }
+            },
+            stroke: { curve: 'smooth', width: 3 },
+            colors: ['#FF9800'],
+            fill: {
+                type: 'gradient',
+                gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.3, stops: [0, 90, 100] }
+            },
+            xaxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'] }
+        };
+
+        const revenueGrowthOptions = {
+            series: [{
+                name: 'Revenue',
+                data: [89000, 95000, 103000, 111000, 118000, 129521]
+            }],
+            chart: {
+                type: 'area',
+                height: 350,
+                toolbar: { show: false }
+            },
+            colors: ['#4CAF50'],
+            fill: {
+                type: 'gradient',
+                gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.3 }
+            }
+        };
+
+        const productDistOptions = {
+            series: [{
+                name: 'Units Sold',
+                data: [44, 55, 57, 56, 61, 58, 63]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350,
+                toolbar: { show: false }
+            },
+            colors: ['#2196F3'],
+            plotOptions: {
+                bar: { borderRadius: 8, columnWidth: '60%' }
+            }
+        };
+
+        const performanceGaugeOptions = {
+            series: [67],
+            chart: { type: 'radialBar', height: 350 },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -135,
+                    endAngle: 135,
+                    hollow: { size: '70%' },
+                    track: { background: '#e7e7e7', strokeWidth: '97%', margin: 5 },
+                    dataLabels: {
+                        show: true,
+                        name: { show: true, fontSize: '16px', color: '#888', offsetY: -10 },
+                        value: { show: true, fontSize: '24px', color: '#111', offsetY: 0 }
+                    }
+                }
+            },
+            fill: {
+                type: 'gradient',
+                gradient: { shade: 'dark', type: 'horizontal', shadeIntensity: 0.5, gradientToColors: ['#FF9800'], stops: [0, 100] }
+            },
+            stroke: { lineCap: 'round' },
+            labels: ['Performance']
+        };
+
+        new ApexCharts(document.querySelector("#salesTrendChart"), salesTrendOptions).render();
+        new ApexCharts(document.querySelector("#revenueGrowthChart"), revenueGrowthOptions).render();
+        new ApexCharts(document.querySelector("#productDistChart"), productDistOptions).render();
+        new ApexCharts(document.querySelector("#performanceGauge"), performanceGaugeOptions).render();
+    </script>
+</body>
+</html>
